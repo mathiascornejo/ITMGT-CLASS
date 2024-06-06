@@ -30,7 +30,9 @@ def savings(gross_pay, tax_rate, expenses):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+    import math
+    final_pay = math.floor((1 - tax_rate) * gross_pay) - expenses
+    return final_pay
 
 def material_waste(total_material, material_units, num_jobs, job_consumption):
     '''Material Waste.
@@ -64,7 +66,8 @@ def material_waste(total_material, material_units, num_jobs, job_consumption):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+    remaining_material = str(total_material-num_jobs*job_consumption) + material_units
+    return remaining_material
 
 def interest(principal, rate, periods):
     '''Interest.
@@ -93,4 +96,6 @@ def interest(principal, rate, periods):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+    import math
+    final_investment_value = math.floor(principal*(1+rate*periods))
+    return final_investment_value
