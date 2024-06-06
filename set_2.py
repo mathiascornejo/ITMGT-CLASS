@@ -34,7 +34,12 @@ def shift_letter(letter, shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+    if letter == " ":
+        return letter
+    else:
+        new_letter = chr((ord(letter) - ord('A') + shift) % 26 + ord('A'))
+        return new_letter
+
 
 def caesar_cipher(message, shift):
     '''Caesar Cipher.
@@ -55,7 +60,13 @@ def caesar_cipher(message, shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+    result = []
+    for letter in message:
+        if letter == " ":
+            result.append(letter)
+        else:
+            result.append(chr((ord(letter) - ord('A') + shift) % 26 + ord('A')))
+    return ''.join(result)
 
 def shift_by_letter(letter, letter_shift):
     '''Shift By Letter.
@@ -84,7 +95,11 @@ def shift_by_letter(letter, letter_shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+    if letter == " ":
+        return letter
+    else:
+        new_letter = chr((ord(letter) - ord('A') + ord(letter_shift) - ord('A')) % 26 + ord('A'))
+        return new_letter
 
 def vigenere_cipher(message, key):
     '''Vigenere Cipher.
@@ -124,6 +139,7 @@ def scytale_cipher(message, shift):
     Encrypts a message by simulating a scytale cipher.
 
     A scytale is a cylinder around which you can wrap a long strip of
+    
         parchment that contained a string of apparent gibberish. The parchment,
         when read using the scytale, would reveal a message due to every nth
         letter now appearing next to each other, revealing a proper message.
