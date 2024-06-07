@@ -64,9 +64,26 @@ def tic_tac_toe(board):
     str
         the symbol of the winner or "NO WINNER" if there is no winner
     '''
-    # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+    
+    for i in range(len(board)):
+
+        if all(board[i][j] == board[i][0] and board[i][0] != '' for j in range(1, len(board))):
+
+            return board[i][0]
+        
+        if all(board[j][i] == board[0][i] and board[0][i] != '' for j in range(1, len(board))):
+
+            return board[0][i]
+        
+    if all(board[i][i] == board[0][0] and board[0][0] != '' for i in range(1, len(board))):
+
+        return board[0][0]
+    
+    if all(board[i][len(board) - 1 - i] == board[0][len(board) - 1] and board[0][len(board) - 1] != '' for i in range(1, len(board))):
+
+        return board[0][len(board) - 1]
+    
+    return "NO WINNER"
 
 def eta(first_stop, second_stop, route_map):
     '''ETA.
@@ -96,13 +113,17 @@ def eta(first_stop, second_stop, route_map):
     int
         the time it will take the shuttle to travel from first_stop to second_stop
     '''
-    # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The function should return your answer.
+
     total_time = 0
+
     while first_stop != second_stop:
+
         for path, info in route_map.items():
+
             if path[0] == first_stop:
+
                 total_time += info['travel_time_mins']
                 first_stop = path[1]
                 break
+
     return total_time
