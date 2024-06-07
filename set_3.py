@@ -115,7 +115,7 @@ def eta(first_stop, second_stop, route_map):
     '''
 
     total_time = 0
-
+    
     while first_stop != second_stop:
 
         for path, info in route_map.items():
