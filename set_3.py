@@ -36,9 +36,9 @@ def relationship_status(from_member, to_member, social_graph):
         "friends" if fromMember and toMember follow each other,
         "no relationship" if neither fromMember nor toMember follow each other.
     '''
-    # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+
+    return "friends" if to_member in social_graph[from_member]["following"] and from_member in social_graph[to_member]["following"] else "follower" if to_member in social_graph[from_member]["following"] else "followed by" if from_member in social_graph[to_member]["following"] else "no relationship"
+
 
 
 def tic_tac_toe(board):
@@ -98,4 +98,11 @@ def eta(first_stop, second_stop, route_map):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+    total_time = 0
+    while first_stop != second_stop:
+        for path, info in route_map.items():
+            if path[0] == first_stop:
+                total_time += info['travel_time_mins']
+                first_stop = path[1]
+                break
+    return total_time
