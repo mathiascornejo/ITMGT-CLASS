@@ -32,17 +32,9 @@ def shift_letter(letter, shift):
         the letter, shifted appropriately, if a letter.
         a single space if the original letter was a space.
     '''
-    # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The function should return your answer.
     
-    if letter == " ":
-        
-        return letter
-    
-    else:
-        
-        new_letter = chr((ord(letter) - ord('A') + shift) % 26 + ord('A'))
-        return new_letter
+    return letter if letter == " " else chr((ord(letter) - ord('A') + shift) % 26 + ord('A'))
+
 
 
 def caesar_cipher(message, shift):
@@ -62,22 +54,10 @@ def caesar_cipher(message, shift):
     str
         the message, shifted appropriately.
     '''
-    # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The function should return your answer.
     
-    result = []
-    
-    for letter in message:
-        
-        if letter == " ":
-            
-            result.append(letter)
-        
-        else:
-            
-            result = [(chr((ord(letter) - ord('A') + shift) % 26 + ord('A'))) for letter in message]
-    
-    return ''.join(result)
+    return ''.join([letter if letter == " " else (chr((ord(letter) - ord('A') + shift) % 26 + ord('A'))) for letter in message])
+
+
 
 def shift_by_letter(letter, letter_shift):
     '''Shift By Letter.
@@ -104,17 +84,10 @@ def shift_by_letter(letter, letter_shift):
     str
         the letter, shifted appropriately.
     '''
-    # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The function should return your answer.
-    
-    if letter == " ":
-    
-        return letter
-    
-    else:
-    
-        new_letter = chr((ord(letter) - ord('A') + ord(letter_shift) - ord('A')) % 26 + ord('A'))
-        return new_letter
+
+    return letter if letter == " " else chr((ord(letter) - ord('A') + ord(letter_shift) - ord('A')) % 26 + ord('A'))
+
+
 
 def vigenere_cipher(message, key):
     '''Vigenere Cipher.
@@ -144,28 +117,10 @@ def vigenere_cipher(message, key):
     str
         the message, shifted appropriately.
     '''
-    # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The function should return your answer.
-    
-    extended_key = []
-    result = []
-    
-    for i in range(len(message)):
-        
-        extended_key.append(key[i % len(key)])
-        
-    for i in range(len(message)):
-        
-        if message[i] == " ":
-            
-            result.append(" ")
-        
-        else:
-            
-            new_letter = chr((ord(message[i]) - ord('A') + ord(key[i]) - ord('A')) % 26 + ord('A'))
-            result.append(new_letter)
-        
-    return ''.join(result)
+
+    return ''.join([message[i] if message[i] == " " else chr((ord(message[i]) - ord('A') + ord(key[i % len(key)]) - ord('A')) % 26 + ord('A')) for i in range(len(message))])
+
+
 
 def scytale_cipher(message, shift):
     '''Scytale Cipher.
@@ -217,19 +172,11 @@ def scytale_cipher(message, shift):
     str
         the encoded message
     '''
-    # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The function should return your answer.
-    result = []
 
-    while len(message) % shift != 0:
-        
-        message += "_"
-        
-    for i in range(len(message)):
-        
-        result.append(message[i // shift + (len(message) // shift) * (i % shift)])
-        
-    return ''.join(result)
+    message += "_" * ((shift - len(message) % shift) % shift)
+    
+    return ''.join([message[i // shift + (len(message) // shift) * (i % shift)] for i in range(len(message))])
+
 
 
 def scytale_decipher(message, shift):
@@ -256,6 +203,5 @@ def scytale_decipher(message, shift):
     str
         the decoded message
     '''
-    # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+
+    return ''.join([message[(i // (len(message) // shift)) + (shift * (i % (len(message) // shift)))] for i in range(len(message))])
