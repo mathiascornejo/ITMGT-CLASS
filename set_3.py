@@ -127,6 +127,3 @@ def eta(first_stop, second_stop, route_map):
                 break
 
     return total_time
-
-
-    return sum(info['travel_time_mins'])
