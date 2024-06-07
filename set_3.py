@@ -122,8 +122,11 @@ def eta(first_stop, second_stop, route_map):
 
             if path[0] == first_stop:
 
-                total_time += info['travel_time_mins']
+                total_time += info["travel_time_mins"]
                 first_stop = path[1]
                 break
 
     return total_time
+
+
+    return sum(info['travel_time_mins'])
