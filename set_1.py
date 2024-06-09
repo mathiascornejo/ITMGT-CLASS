@@ -64,7 +64,7 @@ def material_waste(total_material, material_units, num_jobs, job_consumption):
         the amount of remaining material expressed with its unit (e.g., "10kg").
     '''
     
-    return str(total_material-num_jobs*job_consumption) + material_units
+    return str(total_material - num_jobs * job_consumption) + material_units
 
 
 
@@ -94,4 +94,4 @@ def interest(principal, rate, periods):
         the final value of the investment
     '''
  
-    return int(principal*(1 + rate * periods))
+    return int(principal * (1 + rate * periods))
